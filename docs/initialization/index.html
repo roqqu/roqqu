@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Roqqu Documentation · </title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Initialization"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Roqqu Documentation · "/><meta property="og:type" content="website"/><meta property="og:url" content="https://roqqu.github.io/roqqu/"/><meta property="og:description" content="## Initialization"/><meta property="og:image" content="https://roqqu.github.io/roqqu/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://roqqu.github.io/roqqu/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/roqqu/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/roqqu/js/scrollSpy.js"></script><link rel="stylesheet" href="/roqqu/css/main.css"/><script src="/roqqu/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a><img class="logo" src="/roqqu/img/roqqu_logo_white.png" alt=""/><h2 class="headerTitleWithLogo"></h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/roqqu/docs/getting-started" target="_self">Documentation</a></li><li class=""><a href="/roqqu/help" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Roqqu JS</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Checkout Button<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/roqqu/docs/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/roqqu/docs/checkout-option">Adding Roqqu as a checkout option</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Roqqu JS<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/roqqu/docs/roqqu-js-introduction">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/roqqu/docs/initialization">Initialization</a></li><li class="navListItem"><a class="navItem" href="/roqqu/docs/verifying-transactions">Verifying Transactions</a></li><li class="navListItem"><a class="navItem" href="/roqqu/docs/webhooks">Webhooks</a></li><li class="navListItem"><a class="navItem" href="/roqqu/docs/roqqu-embed-js-examples">Roqqu Embed JS Examples</a></li><li class="navListItem"><a class="navItem" href="/roqqu/docs/errors">Errors</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">API<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/roqqu/docs/api-introduction">Introduction</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Roqqu Documentation</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="initialization"></a><a href="#initialization" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Initialization</h2>
+<p>To start receiving payments, you must first initialize the <code>roqqu.js</code>
+file.</p>
+<blockquote>
+<p>Please note that only businesses which have completed the
+compliance process and have been verified can accept payments. This is to ensure
+that every business using our infrastructure have been properly
+vetted for Anti-Money Laundering policies.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="step-1-load-the-js-file"></a><a href="#step-1-load-the-js-file" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 1. Load the JS file</h3>
+<div class="tabs"><div class="nav-tabs"><div id="tab-group-76-tab-77" class="nav-link active" data-group="group_76" data-tab="tab-group-76-content-77">HTML</div></div><div class="tab-content"><div id="tab-group-76-content-77" class="tab-pane active" data-group="group_76" tabindex="-1"><div><span><pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://js.roqqu.com/v1/roqqu.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br /></code></pre>
+</span></div></div></div></div>
+<p>If the <code>roqqu.js</code> is intialized correctly you should
+not see any error on your browser console.</p>
+<h3><a class="anchor" aria-hidden="true" id="step-2-create-the-roqqu-container"></a><a href="#step-2-create-the-roqqu-container" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 2. Create the Roqqu container</h3>
+<p>After loading the Roqqu JS file on the page, you'll need to
+create a container that will house the Roqqu elements when
+they load.<div class="tabs"><div class="nav-tabs"><div id="tab-group-78-tab-79" class="nav-link active" data-group="group_78" data-tab="tab-group-78-content-79">HTML</div></div><div class="tab-content"><div id="tab-group-78-content-79" class="tab-pane active" data-group="group_78" tabindex="-1"><div><span><pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;roqquContainer&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br /></code></pre>
+</span></div></div></div></div></p>
+<h3><a class="anchor" aria-hidden="true" id="step-3-write-the-roqqu-function"></a><a href="#step-3-write-the-roqqu-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 3. Write the Roqqu function</h3>
+<p>The next step is to write your initialization function and parse
+your load parameters. This code should be placed after the
+closing body tag at the end of the page in order for it to
+work.</p>
+<p>Here's a basic structure of the code to get it up and running.</p>
+<blockquote>
+<p>Please note that the key to use with Roqqu JS is the public key and not the secret key</p>
+</blockquote>
+ <div class="tabs"><div class="nav-tabs"><div id="tab-group-80-tab-81" class="nav-link active" data-group="group_80" data-tab="tab-group-80-content-81">JavaScript</div></div><div class="tab-content"><div id="tab-group-80-content-81" class="tab-pane active" data-group="group_80" tabindex="-1"><div><span><pre><code class="hljs css language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">payWithRoqqu</span>(<span class="hljs-params"></span>)</span>{<br />   <span class="hljs-keyword">var</span> handler = roqqu.init({<br />       <span class="hljs-attr">amount</span>: <span class="hljs-number">350</span>,<br />       <span class="hljs-attr">currency</span>: <span class="hljs-string">'usd'</span>,<br />       <span class="hljs-attr">pay_options</span>: <span class="hljs-string">'btc, eth'</span>,<br />       <span class="hljs-attr">description</span>: <span class="hljs-string">'Black pair of shoes'</span>,<br />       <span class="hljs-attr">public_key</span>: <span class="hljs-string">'RQPUBK-xsk8cedf4kxakzrur9c8kkicbf6qiz'</span>,<br />       <span class="hljs-attr">customer</span>: <span class="hljs-string">'lite2fine@gmail.com'</span>,<br />       <span class="hljs-attr">return_url</span>: <span class="hljs-string">'https://roqqu.com/transaction/verify'</span><br />   });<br />   handler.load();<br />}<br /></code></pre>
+</span></div></div></div></div>
+<h3><a class="anchor" aria-hidden="true" id="configuration-options"></a><a href="#configuration-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration Options</h3>
+<p>'*' indicates required parameters.</p>
+<table>
+<thead>
+<tr><th>Option</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>amount *</code></td><td>Amount in USD or NGN up to 2 decimal places.</td></tr>
+<tr><td><code>currency</code></td><td>Currency charge should be performed in NGN or USD. Default is NGN</td></tr>
+<tr><td><code>public_key *</code></td><td>This is your business public key as found on your Roqqu business account on your dashboard</td></tr>
+<tr><td><code>customer *</code></td><td>This is the email of your customer</td></tr>
+<tr><td><code>description</code></td><td>An explanation of what the charge is for</td></tr>
+<tr><td><code>return_url</code></td><td>URL to be redirected to after charge is complete (transaction reference will be sent to this URL as <code>GET</code> parameter)</td></tr>
+<tr><td><code>pay_options</code></td><td>The tokens you want to accept separated by comma, default is all</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="step-4-setting-the-trigger-button"></a><a href="#step-4-setting-the-trigger-button" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Step 4 - Setting the trigger button</h3>
+<p>Next you'll need to attach the Javascript function to a button
+that will trigger the payment page.<div class="tabs"><div class="nav-tabs"><div id="tab-group-82-tab-83" class="nav-link active" data-group="group_82" data-tab="tab-group-82-content-83">HTML</div></div><div class="tab-content"><div id="tab-group-82-content-83" class="tab-pane active" data-group="group_82" tabindex="-1"><div><span><pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;payWithRoqqu()&quot;</span>&gt;</span>Pay now<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br /></code></pre>
+</span></div></div></div></div></p>
+<p>If you have done everything correctly, clicking the button
+should initialize the payment page based on the parameters
+you set during initialization.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/roqqu/docs/roqqu-js-introduction"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/roqqu/docs/verifying-transactions"><span>Verifying Transactions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#initialization">Initialization</a><ul class="toc-headings"><li><a href="#step-1-load-the-js-file">Step 1. Load the JS file</a></li><li><a href="#step-2-create-the-roqqu-container">Step 2. Create the Roqqu container</a></li><li><a href="#step-3-write-the-roqqu-function">Step 3. Write the Roqqu function</a></li><li><a href="#configuration-options">Configuration Options</a></li><li><a href="#step-4-setting-the-trigger-button">Step 4 - Setting the trigger button</a></li></ul></li></ul></nav></div><footer class="nav-footer nav-footer-style" id="footer"></footer></div></body></html>
