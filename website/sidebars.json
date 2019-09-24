@@ -1,0 +1,19 @@
+{
+  "docs": {
+    "Checkout Button": [
+      "getting-started",
+      "checkout-option"
+    ],
+    "Roqqu JS": [
+      "roqqu-js-introduction",
+      "initialization",
+      "verifying-transactions",
+      "webhooks",
+      "roqqu-embed-js-examples",
+      "errors"
+    ],
+    "API": [
+      "api-introduction"
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+/* your custom css */
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
+.nav-footer-style{
+    background-color: #00193f!important;
+}
+.hljs {
+    background: #f9f9f9 !important;
+}
+.hljs, .hljs-subst {
+    color: #ccc!important;
+}
+
+/* "Copy" code block button */
+pre {
+    position: relative;
+}
+
+pre .btnIcon {
+    position: absolute;
+    top: 4px;
+    z-index: 2;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 0;
+    background-color: transparent;
+    height: 30px;
+    transition: all .25s ease-out;
+}
+
+pre .btnIcon:hover {
+    text-decoration: none;
+}
+
+.btnIcon__body {
+    align-items: center;
+    display: flex;
+}
+
+.btnIcon svg {
+    fill: currentColor;
+    margin-right: .4em;
+}
+
+.btnIcon__label {
+    font-size: 11px;
+}
+
+.btnClipboard {
+    right: 10px;
+}
+.hljs-name{
+    color:#9c3328;
+}
+.hljs-attr{
+    color:#047d65;
+}
+.hljs-string{
+    color:#9c3328
+}
+.hljs-keyword{
+    color: #0050ce
+}
+.hljs, .hljs-subst {
+    color: #7900a4 !important;
+}
